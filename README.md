@@ -30,7 +30,7 @@ For machine to machine web services where readability is not important, one coul
 
 ## Section 2
 
-**Prerequisites**
+Prerequisites
 
 ```shell
 brew install elixir
