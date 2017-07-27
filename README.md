@@ -8,7 +8,7 @@ According to the REST architecture, the aforementioned HTTP Methods should be us
 
 * GET - Read/Querying a resource
 * POST - Creating a resource
-* PATCH (UPDATE) - Updating/Modyfing a resource
+* PATCH (UPDATE) - Updating/Modifying a resource
 * PUT - Updating/Replacing a resource
 
 ### Authentication for Web Services (Machine to Machine)
