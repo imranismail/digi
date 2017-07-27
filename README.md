@@ -27,3 +27,17 @@ According to the REST architecture, the aforementioned HTTP Methods should be us
 Depending on the use-case, for userland facing API the JSON serialization format is preferable as it's human readable and universally implemented in almost all environment
 
 For machine to machine web services where readability is not important, one could opt to use binary serialization format such as Protocol Buffers or Apache Thrift as it is more compact and efficient when compared to the likes of JSON or XML serialization format.
+
+## Section 2
+
+**Prerequisites**
+
+```shell
+brew install elixir
+```
+
+Run test with
+
+```shell
+mix test
+```
