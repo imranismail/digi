@@ -39,7 +39,7 @@ defmodule DigiTest do
     {:ok, checkout: checkout}
   end
 
-  test "Counter Scans [ATV, ATV, ATV, VGA]", state do
+  test "Cashier Scans [ATV, ATV, ATV, VGA]", state do
     checkout =
       state[:checkout]
       |> Cashier.scan("ATV")
@@ -50,7 +50,7 @@ defmodule DigiTest do
     assert Checkout.total(checkout) == 249_00
   end
 
-  test "Counter Scans [ATV, IPD, IPD, ATV, IPD, IPD, IPD]", state do
+  test "Cashier Scans [ATV, IPD, IPD, ATV, IPD, IPD, IPD]", state do
     checkout =
       state[:checkout]
       |> Cashier.scan("ATV")
@@ -64,7 +64,7 @@ defmodule DigiTest do
     assert Checkout.total(checkout) == 2718_95
   end
 
-  test "Counter Scans [MBP, VGA, IPD]", state do
+  test "Cashier Scans [MBP, VGA, IPD]", state do
     checkout =
       state[:checkout]
       |> Cashier.scan("MBP")
@@ -74,7 +74,7 @@ defmodule DigiTest do
     assert Checkout.total(checkout) == 1949_98
   end
 
-  test "Counter Scans [MBP, VGA, IPD, MBP, VGA, IPD]", state do
+  test "Cashier Scans [MBP, VGA, IPD, MBP, VGA, IPD]", state do
     checkout =
       state[:checkout]
       |> Cashier.scan("MBP")
