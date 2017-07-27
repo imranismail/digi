@@ -13,14 +13,14 @@ defmodule DigiTest do
 
     promo_atv = Promotion.new(name: "Apple TV 3 for 2 Deal",
                               value: -atv.price,
-                              prerequisite_subtotal_range: {:eq, atv.price * 3},
+                              prerequisite_qty_range: {:eq, 3},
                               entitled_skus: ["ATV"],
                               usage_limit: 1,
                               allocation_method: :across)
 
     promo_ipad = Promotion.new(name: "Super iPad Discount",
                                value: -(ipd.price - @ipd_discounted_price),
-                               prerequisite_subtotal_range: {:gt, ipd.price * 4},
+                               prerequisite_qty_range: {:gt, 4},
                                entitled_skus: ["IPD"],
                                allocation_method: :each)
 

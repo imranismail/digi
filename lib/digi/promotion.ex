@@ -1,6 +1,6 @@
 defmodule Digi.Promotion do
-  defstruct [:name, :value, :prerequisite_subtotal_range, :usage_limit,
-             :allocation_method, :entitled_skus, :prerequisite_skus]
+  defstruct [:name, :value, :usage_limit, :allocation_method, :entitled_skus,
+             :prerequisite_skus, :prerequisite_qty_range]
 
   def new(attrs) do
     struct(__MODULE__, attrs)
@@ -16,7 +16,7 @@ defmodule Digi.Promotion do
 
   def apply?(promotion, checkout) do
     not exceed_usage_limit?(promotion, checkout)
-    and fulfilled_prerequisite_subtotal_range?(promotion, checkout)
+    and fulfilled_prerequisite_qty_range?(promotion, checkout)
     and fulfilled_prerequisite_skus?(promotion, checkout)
   end
 
@@ -28,17 +28,16 @@ defmodule Digi.Promotion do
     |> Kernel.>=(promotion.usage_limit)
   end
 
-  defp fulfilled_prerequisite_subtotal_range?(promotion, checkout) do
-    subtotal =
+  defp fulfilled_prerequisite_qty_range?(promotion, checkout) do
+    count =
       checkout.items
       |> Enum.filter(&(&1.sku in promotion.entitled_skus))
-      |> Enum.map(&(&1.price))
-      |> Enum.sum()
+      |> Enum.count()
 
-    case promotion.prerequisite_subtotal_range do
-      {:gt, value} -> subtotal > value
-      {:eq, value} -> subtotal == value
-      {:lt, value} -> subtotal < value
+    case promotion.prerequisite_qty_range do
+      {:gt, value} -> count > value
+      {:eq, value} -> count == value
+      {:lt, value} -> count < value
       nil          -> true
       _            -> false
     end
